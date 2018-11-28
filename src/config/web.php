@@ -19,8 +19,8 @@ $config = [
             'class' => 'app\components\Formatter',
         ],
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '',
+            'enableCookieValidation' => true,
+            'cookieValidationKey' => 'RiAveGUdUACvWZppHVevMJRGd5Rij8uh',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
