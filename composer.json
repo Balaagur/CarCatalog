@@ -1,0 +1,68 @@
+{
+    "name": "nullref/yii2-app",
+    "description": "Yii 2 Project Template",
+    "keywords": ["yii2", "framework", "project template"],
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmytro Karpovych",
+            "email": "ZAYEC77@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/NullRefExcep/yii2-boilerplate/issues",
+        "source": "https://github.com/NullRefExcep/yii2-boilerplate"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5.0",
+        "yiisoft/yii2": ">=2.0.13",
+        "yiisoft/yii2-bootstrap": "^2.0",
+        "yiisoft/yii2-swiftmailer": "^2.0",
+        "vlucas/phpdotenv": "~1.0@dev",
+        "nullref/yii2-useful": ">=0.0.4",
+        "nullref/yii2-core": ">=0.0.3",
+        "nullref/yii2-full-admin": "dev-master",
+        "yiisoft/yii2-shell": "^2.0"
+    },
+    "require-dev": {
+        "codeception/codeception": "^2.2",
+        "yiisoft/yii2-debug": "*",
+        "yiisoft/yii2-gii": "*",
+        "yiisoft/yii2-faker": "*"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "config": {
+        "process-timeout": 1800,
+        "sort-packages": true,
+        "fxp-asset": {
+            "enabled": false
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject",
+            "cp .env.example .env"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "yii": "0755"
+                }
+            ],
+            "generateCookieValidationKey": [
+                "src/config/web.php"
+            ]
+        }
+    }
+}
