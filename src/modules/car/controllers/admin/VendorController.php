@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\car\controllers;
+namespace app\modules\car\controllers\admin;
 
 use Yii;
 use app\modules\car\models\Vendor;
@@ -19,7 +19,7 @@ class VendorController extends Controller implements IAdminController
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],

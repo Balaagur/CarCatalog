@@ -17,22 +17,21 @@ class Module extends BaseModule
     {
         return [
             'label' => Yii::t('admin', 'Car catalog'),
-            'url'   => ['/admin/main'],
             'icon'  => FA::_TASKS,
             'items' => [
                 [
                     'label' => Yii::t('admin', 'Cars'),
-                    'url'   => ['/admin/car/car'],
+                    'url'   => ['/car/admin/car'],
                     'icon'  => FA::_CAR,
                 ],
                 [
                     'label' => Yii::t('admin', 'Vendors'),
-                    'url'   => ['/admin/car/vendor'],
+                    'url'   => ['/car/admin/vendor'],
                     'icon'  => FA::_LIST,
                 ],
                 [
-                    'label' => Yii::t('admin', 'Catagories'),
-                    'url'   => ['/admin/car/catalog'],
+                    'label' => Yii::t('admin', 'Category'),
+                    'url'   => ['/car/admin/category'],
                     'icon'  => FA::_LIST,
                 ],
             ],

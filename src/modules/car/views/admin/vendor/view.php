@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\car\models\Category */
+/* @var $model app\modules\car\models\Vendor */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('car', 'Categories'), 'url' => ['index']];
+$this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('car', 'Vendors'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="category-view">
+<div class="vendor-view">
 
     <div class="row">
         <div class="col-lg-12">
@@ -36,9 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'category',
-            'created_at',
-            'updated_at',
+            'title',
+            'country',
+            'created_at:date',
+            'updated_at:date',
         ],
     ]) ?>
 

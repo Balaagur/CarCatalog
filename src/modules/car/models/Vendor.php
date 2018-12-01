@@ -2,7 +2,11 @@
 
 namespace app\modules\car\models;
 
+use nullref\useful\DropDownTrait;
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%vendor}}".
@@ -15,8 +19,21 @@ use Yii;
  *
  * @property Car[] $cars
  */
-class Vendor extends \yii\db\ActiveRecord
+class Vendor extends ActiveRecord
 {
+    use DropDownTrait;
+
+    public function behaviors()
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            'datetime' => [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+            ],
+        ]);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -55,6 +72,6 @@ class Vendor extends \yii\db\ActiveRecord
      */
     public function getCars()
     {
-        return $this->hasMany(Car::className(), ['vendor_id' => 'id']);
+        return $this->hasMany(Car::class, ['vendor_id' => 'id']);
     }
 }

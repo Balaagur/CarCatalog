@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\car\models\VendorSearch */
+/* @var $searchModel app\modules\car\models\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('car', 'Vendors');
+$this->title = Yii::t('car', 'Categories');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="vendor-index">
+<div class="category-index">
 
 <div class="row">
     <div class="col-lg-12">
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('car', 'Create Vendor'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('car', 'Create Category'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -34,9 +34,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
-            'country',
-            'created_at',
-            'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

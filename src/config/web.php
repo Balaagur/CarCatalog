@@ -55,6 +55,19 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
     ],
+    'controllerMap' => [
+        'elfinder' => [
+            'class'  => 'mihaildev\elfinder\Controller',
+            'user'   => 'user',
+            'access' => ['@'],
+            'roots'  => [
+                [
+                    'path' => 'files',
+                    'name' => 'Files',
+                ],
+            ],
+        ],
+    ],
     'modules' => $modules,
     'params' => $params,
 ];

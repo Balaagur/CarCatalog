@@ -2,7 +2,11 @@
 
 namespace app\modules\car\models;
 
+use nullref\useful\behaviors\JsonBehavior;
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%car}}".
@@ -20,8 +24,25 @@ use Yii;
  * @property Category $category
  * @property Vendor $vendor
  */
-class Car extends \yii\db\ActiveRecord
+class Car extends ActiveRecord
 {
+    public function behaviors()
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            'datetime' => [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+            ],
+            'json' => [
+                'class' => JsonBehavior::class,
+                'fields' => [
+                    'photos'
+                ],
+            ],
+        ]);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -36,11 +57,12 @@ class Car extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['photos', 'description'], 'string'],
+            [['photos'], 'safe'],
+            [['description'], 'string'],
             [['vendor_id', 'category_id', 'created_at', 'updated_at'], 'integer'],
             [['model', 'photo'], 'string', 'max' => 255],
-            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
-            [['vendor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Vendor::className(), 'targetAttribute' => ['vendor_id' => 'id']],
+            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
+            [['vendor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Vendor::class, 'targetAttribute' => ['vendor_id' => 'id']],
         ];
     }
 
@@ -67,7 +89,7 @@ class Car extends \yii\db\ActiveRecord
      */
     public function getCategory()
     {
-        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+        return $this->hasOne(Category::class, ['id' => 'category_id']);
     }
 
     /**
@@ -75,6 +97,6 @@ class Car extends \yii\db\ActiveRecord
      */
     public function getVendor()
     {
-        return $this->hasOne(Vendor::className(), ['id' => 'vendor_id']);
+        return $this->hasOne(Vendor::class, ['id' => 'vendor_id']);
     }
 }

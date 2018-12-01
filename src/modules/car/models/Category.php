@@ -2,20 +2,38 @@
 
 namespace app\modules\car\models;
 
+use nullref\useful\DropDownTrait;
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%category}}".
  *
  * @property int $id
- * @property string $category
+ * @property string title
  * @property int $created_at
  * @property int $updated_at
  *
  * @property Car[] $cars
  */
-class Category extends \yii\db\ActiveRecord
+class Category extends ActiveRecord
 {
+    use DropDownTrait;
+
+    public function behaviors()
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            'datetime' => [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+            ],
+        ]);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -31,7 +49,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['created_at', 'updated_at'], 'integer'],
-            [['category'], 'string', 'max' => 255],
+            [['title'], 'string', 'max' => 255],
         ];
     }
 
@@ -42,17 +60,17 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('car', 'ID'),
-            'category' => Yii::t('car', 'Category'),
+            'title' => Yii::t('car', 'Title'),
             'created_at' => Yii::t('car', 'Created At'),
             'updated_at' => Yii::t('car', 'Updated At'),
         ];
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getCars()
     {
-        return $this->hasMany(Car::className(), ['category_id' => 'id']);
+        return $this->hasMany(Car::class, ['category_id' => 'id']);
     }
 }

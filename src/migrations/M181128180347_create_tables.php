@@ -39,7 +39,7 @@ class M181128180347_create_tables extends Migration
 
         $this->createTable('{{%category}}', [
             'id'         => $this->primaryKey(),
-            'category'   => $this->string(),
+            'title'   => $this->string(),
             'created_at' => $this->integer(),
             'updated_at' => $this->integer(),
         ]);
