@@ -1,21 +1,21 @@
 <?php
 
 return array_merge(require(__DIR__ . '/installed_modules.php'), [
-    'core' => [
+    'core'  => [
         'class' => 'nullref\core\Module',
     ],
-    'admin'   => [
-        'class' => 'app\modules\admin\Module',
+    'admin' => [
+        'class'         => 'app\modules\admin\Module',
         'controllerMap' => [
             'main' => [
                 'class' => 'app\modules\admin\controllers\MainController',
-            ]
+            ],
         ],
-        'components' => [
+        'components'    => [
             'menuBuilder' => 'app\modules\admin\components\AdminMenuBuilder',
         ],
     ],
-    'user'    => [
+    'user'  => [
         'class'         => 'app\modules\user\Module',
         'layout'        => '@app/modules/admin/views/layouts/main',
         'controllerMap' => [
@@ -38,5 +38,8 @@ return array_merge(require(__DIR__ . '/installed_modules.php'), [
                 'class' => 'app\modules\user\controllers\SettingsController',
             ],
         ],
+    ],
+    'car'   => [
+        'class' => 'app\modules\car\Module',
     ],
 ]);

@@ -21,35 +21,9 @@ class AdminMenuBuilder extends BaseBuilder
             $newItems['user'] = $items['user'];
         }
         if (isset($items['car'])) {
-            $newItems['car'] = $items['catalog'];
+            $newItems['car'] = $items['car'];
         }
         return $newItems;
-
-        $roles = [];
-
-        if (!Yii::$app->user->isGuest) {
-            $roles = Yii::$app->user->identity->roles;
-        }
-
-        return $this->filterByRoleArray($newItems, $roles);
-    }
-
-    public function filterByRoleArray($menu, $roles = [], $paramName = 'roles')
-    {
-        $result = [];
-        foreach ($menu as $key => $item) {
-            if (isset($item['items'])) {
-                $result[$key] = $item;
-                $result[$key]['items'] = $this->filterByRoleArray($result[$key]['items'], $roles, $paramName);
-            } else {
-                if (isset($item[$paramName])) {
-                    if (array_diff($roles, $item[$paramName]) !== $roles) {
-                        $result[$key] = $item;
-                    }
-                }
-            }
-        }
-        return $result;
     }
 }
 
