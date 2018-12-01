@@ -66,6 +66,31 @@ if (YII_ENV_DEV) {
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = 'yii\gii\Module';
+
+    $config['components']['mailer'] = [
+        'class'            => 'yii\swiftmailer\Mailer',
+        'useFileTransport' => YII_MAIL_USE_FILE_TRANSPORT,
+    ];
+} else {
+    $config['components']['mailer'] = [
+        'class'            => 'yii\swiftmailer\Mailer',
+        'viewPath'         => '@app/modules/user/views/mail',
+        'transport'        => [
+            'class'      => 'Swift_SmtpTransport',
+            'host'       => 'smtp.gmail.com',
+            'username'   => $params['mailer']['username'],
+            'password'   => $params['mailer']['password'],
+            'port'       => '465',
+            'encryption' => 'ssl',
+            'plugins'    => [
+                [
+                    'class'         => 'Swift_Plugins_LoggerPlugin',
+                    'constructArgs' => [new Swift_Plugins_Loggers_ArrayLogger],
+                ],
+            ],
+        ],
+        'useFileTransport' => false,
+    ];
 }
 
 return $config;

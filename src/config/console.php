@@ -18,6 +18,11 @@ return [
         '@webroot' => dirname(dirname(__DIR__)) . '/web',
     ],
     'components' => [
+        'mailer'      => [
+            'class'                    => 'yii\swiftmailer\Mailer',
+            'useFileTransport'         => true,
+            'enableSwiftMailerLogging' => false,
+        ],
         'db' => require(__DIR__ . '/db.php'),
     ]
 ];
