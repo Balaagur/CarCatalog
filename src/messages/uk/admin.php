@@ -17,12 +17,12 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Car catalog' => 'Катало автомобілей',
+    'Car catalog' => 'Каталог автомобілей',
     'Cars' => 'Автомобілі',
     'Category' => 'Категорії',
+    'Vendors' => 'Виробники',
     'Dashboard' => 'Дашборд',
     'Logout' => 'Вийти',
     'Please Sign In' => 'Будь ласка увійдіть',
     'Sign in' => 'Увійти',
-    'Vendors' => 'Виробники',
 ];
