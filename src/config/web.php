@@ -4,56 +4,57 @@ $params = require(__DIR__ . '/params.php');
 $modules = require(__DIR__ . '/modules.php');
 
 $config = [
-    'id' => 'app',
-    'name' => 'Application',
-    'basePath' => dirname(__DIR__),
-    'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
-    'runtimePath' => dirname(dirname(__DIR__)) . '/runtime',
-    'bootstrap' => ['log'],
-    'aliases' => [
+    'id'            => 'app',
+    'name'          => 'Каталог автомобілів',
+    'language'      => 'uk',
+    'basePath'      => dirname(__DIR__),
+    'vendorPath'    => dirname(dirname(__DIR__)) . '/vendor',
+    'runtimePath'   => dirname(dirname(__DIR__)) . '/runtime',
+    'bootstrap'     => ['log'],
+    'aliases'       => [
         '@bower' => '@vendor/bower-asset',
-        '@npm' => '@vendor/npm-asset',
+        '@npm'   => '@vendor/npm-asset',
     ],
-    'components' => [
-        'formatter' => [
+    'components'    => [
+        'formatter'    => [
             'class' => 'app\components\Formatter',
         ],
-        'request' => [
+        'request'      => [
             'enableCookieValidation' => true,
-            'cookieValidationKey' => 'RiAveGUdUACvWZppHVevMJRGd5Rij8uh',
+            'cookieValidationKey'    => 'RiAveGUdUACvWZppHVevMJRGd5Rij8uh',
         ],
-        'cache' => [
+        'cache'        => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
+        'user'         => [
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
+        'mailer'       => [
+            'class'            => 'yii\swiftmailer\Mailer',
             'useFileTransport' => YII_ENV_DEV,
         ],
-        'i18n' => [
+        'i18n'         => [
             'translations' => [
                 '*' => ['class' => 'yii\i18n\PhpMessageSource'],
             ],
         ],
-        'log' => [
+        'log'          => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
+            'targets'    => [
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class'  => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
             ],
         ],
-        'urlManager' => [
+        'urlManager'   => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'showScriptName'  => false,
         ],
-        'db' => require(__DIR__ . '/db.php'),
+        'db'           => require(__DIR__ . '/db.php'),
     ],
     'controllerMap' => [
         'elfinder' => [
@@ -68,8 +69,8 @@ $config = [
             ],
         ],
     ],
-    'modules' => $modules,
-    'params' => $params,
+    'modules'       => $modules,
+    'params'        => $params,
 ];
 
 if (YII_ENV_DEV) {

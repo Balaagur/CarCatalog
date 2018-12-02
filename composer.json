@@ -17,6 +17,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.5.0",
+        "kartik-v/yii2-widget-select2": "dev-master",
         "mihaildev/yii2-ckeditor": "*",
         "mihaildev/yii2-elfinder": "*",
         "nullref/yii2-core": ">=0.0.3",

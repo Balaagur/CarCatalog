@@ -18,6 +18,11 @@ class SecurityController extends BaseSecurityController
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    [
+                        'actions' => ['login'],
+                        'allow'   => true,
+                        'roles'   => ['?', '@'],
+                    ],
                 ],
             ],
             'verbs' => [

@@ -30,7 +30,7 @@ class Module extends BaseModule
                     'icon'  => FA::_LIST,
                 ],
                 [
-                    'label' => Yii::t('admin', 'Category'),
+                    'label' => Yii::t('admin', 'Categories'),
                     'url'   => ['/car/admin/category'],
                     'icon'  => FA::_LIST,
                 ],
