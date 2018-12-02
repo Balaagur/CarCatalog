@@ -40,9 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
             </h5>
             <div class="photos">
                 <?php foreach ($model->photos as $photo): ?>
-                    <?= Html::img($model->photo, [
+                    <?= Html::img($photo['url'], [
                         'class' => 'car-photo',
-                        'alt'   => $model->model,
                         'style' => '
                     width: 100px;
                     display: inline-block;
